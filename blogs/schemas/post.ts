@@ -8,8 +8,15 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Title',
+      description: 'Keep titles starts',
       type: 'string',
     }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+    
     defineField({
       name: 'slug',
       title: 'Slug',

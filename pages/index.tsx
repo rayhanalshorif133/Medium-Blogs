@@ -13,6 +13,8 @@ export default function Home() {
       </Head>
       <Header />
       <Slider />
+
+      {/* Posts */}
     </div>
   );
 }

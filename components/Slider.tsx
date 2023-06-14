@@ -17,7 +17,7 @@ export default function Slider() {
           </h2>
         </div>
         <img
-          className="hidden md:inline-flex h-32 lg:h-[30rem]"
+          className="hidden md:inline-flex md:h-[15rem] h-32 lg:h-[30rem]"
           src="images/logo_m.png"
           alt=""
         />

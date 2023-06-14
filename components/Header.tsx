@@ -14,7 +14,10 @@ export default function Header() {
         <div className="hidden md:inline-flex items-center space-x-5">
           <h3>About</h3>
           <h3>Contact</h3>
-          <h3 className="text-white bg-green-600 px-4 py-1 rounded-full">
+          <h3
+            className="cursor-pointer text-white bg-green-600 px-4 py-1 rounded-full hover:bg-white hover:text-green-600 
+          hover:border hover:border-spacing-3 hover:border-green-600"
+          >
             Follow
           </h3>
         </div>

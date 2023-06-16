@@ -1,10 +1,7 @@
-import { Inter } from "next/font/google";
-import Head from "next/head";
-import Header from "@/components/Header";
-import Slider from "@/components/Slider";
-import { sanityClient, urlFor } from "../sanity";
 import { Post } from "@/typings";
+import Head from "next/head";
 import Link from "next/link";
+import { sanityClient, urlFor } from "../sanity";
 
 interface Props {
   posts: [Post];
@@ -16,8 +13,8 @@ export default function Home({ posts }: Props) {
       <Head>
         <title>Medium Blogs</title>
       </Head>
-      <Header />
-      <Slider />
+      {/* <Header /> */}
+      {/* <Slider /> */}
 
       {/* Posts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6">

@@ -1,5 +1,6 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+
 
 interface IFormInput {
   _id: string;
@@ -11,6 +12,8 @@ interface IFormInput {
 export default function CommentForm(props: any) {
   const post = props.post;
 
+  const [submitted,setSubmitted] = useState(false);
+
   const {
     watch,
     register,
@@ -20,7 +23,6 @@ export default function CommentForm(props: any) {
   } = useForm<IFormInput>();
 
   const formHandleSubmit: SubmitHandler<IFormInput> = async (data) => {
-    console.log(data);
     await fetch("/api/createComment", {
       method: "POST",
       headers: {
@@ -29,11 +31,25 @@ export default function CommentForm(props: any) {
       body: JSON.stringify(data),
     }).then((response) => {
       console.log(response);
+      setSubmitted(true);
+    }).catch((error) => { 
+      console.log(error);
+      setSubmitted(false);
     });
   };
 
   return (
-    <form
+    <>
+      {
+        submitted ? <div className="text-center justify-center flex flex-col p-10 bg-yellow-500 text-white max-w-2xl mx-auto mb-10">
+          <h3 className="text-3xl font-bold">
+            Thank you for your submission!
+          </h3>
+          <p className="text-lg">
+            Your comment will be reviewed and published shortly.
+          </p>
+        </div> : <>
+        <form
       className="flex flex-col p-5 max-w-2xl mx-auto mb-10"
       onSubmit={handleSubmit(formHandleSubmit)}
     >
@@ -97,5 +113,8 @@ export default function CommentForm(props: any) {
         Submit
       </button>
     </form>
+        </>
+      }
+    </>
   );
 }

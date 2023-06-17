@@ -1,11 +1,10 @@
-import React from "react";
+import CommentForm from "@/components/CommentForm";
+import Header from "@/components/Header";
+import { portableTextSerializer } from "@/libs/portableTextSerializer";
+import Head from "next/head";
+import PortableText from "react-portable-text";
 import { sanityClient, urlFor } from "./../../sanity";
 import { ParamsSlug, Post } from "./../../typings.d";
-import Head from "next/head";
-import Header from "@/components/Header";
-import CommentForm from "@/components/CommentForm";
-import PortableText from "react-portable-text";
-import { portableTextSerializer } from "@/libs/portableTextSerializer";
 
 interface Props {
   post: Post;
@@ -38,7 +37,8 @@ export default function postDetails({ post }: Props) {
           <p className="font-extralight text-sm">
             Blog post by{" "}
             <span className="text-green-600 font-bold">{post.author.name}</span>{" "}
-            - Published at {new Date(post._createdAt).toLocaleString()}
+            - Published at {post._createdAt}
+            {/* {new Date(post._createdAt).toLocaleString()} */}
           </p>
         </div>
         <div className="mt-10">

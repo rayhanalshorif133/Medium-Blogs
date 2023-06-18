@@ -1,3 +1,4 @@
-https://medium-blogs.sanity.studio
+Live Project: 
+Studio/Admin Panel: https://medium-blogs.sanity.studio
 
 

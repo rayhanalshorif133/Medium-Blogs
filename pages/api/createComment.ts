@@ -23,6 +23,8 @@ export default async function createComment(
 
 
   const { _id, name, email, comment } = req.body;
+
+  console.log('Creating comment', name, email);
   
 
   try {

@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function postDetails({ post }: Props) {
-  console.log(post);
   return (
     <div>
       <Head>
@@ -56,6 +55,18 @@ export default function postDetails({ post }: Props) {
 
       <hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
       <CommentForm post={post} />
+      <div className="flex flex-col p-10 my-10 max-w-2xl mx-auto shadow shadow-yellow-500 space-y-2">
+        <h1 className="text-3xl font-bold mt-10 mb-3">Comments</h1>
+        <hr />
+        {post.comments.map((comment) => {
+          return (
+            <div key={comment._id}>
+              <span className="text-yellow-500">{comment.name}: </span>
+              {comment.comment}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -79,11 +90,14 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: ParamsSlug) => {
   const slug = params?.slug;
   const query = `
-    *[_type == 'post' && slug.current == "${slug}"][0]{
+    *[_type == 'post' && slug.current == "1st-blogs"][0]{
     _id,title,
       author->{
       name,image
     },
+    'comments':*[_type == 'comment' 
+                 && post._ref == ^._id 
+                 && approved == true],
     description,
     mainImage,
     slug,
